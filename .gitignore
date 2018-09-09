@@ -1,0 +1,29 @@
+# Visual studio
+*.suo
+*.ldb
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+[Dd]ebug/
+[Rr]elease/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+packages/
+
+.vs/
+*.VisualState.xml
+TestResult.xml
+
+# ReSharper is a .NET coding add-in
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+Resutaten expert Elicitation workshop HNK AWO.xlsx
+Workshop HNK- AGK - 025.xlsx
+IntegrateProbabilities.wmf
