@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PatternDesign.Data
 {
-    public class Class1
+    public class DesignProject
     {
     }
 }
