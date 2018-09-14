@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 
 namespace PatternDesign.Data
 {
     public class ColorPalette
     {
-        private ObservableCollection<DesignColor> colorList;
+        private readonly ObservableCollection<DesignColor> colorList;
 
         public ColorPalette()
         {

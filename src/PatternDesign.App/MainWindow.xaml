@@ -49,7 +49,6 @@
                                        Icon="/Core.Common.Gui;component\Resources\openfolderHS.png"
                                        fluent:KeyTip.Keys="O"
                                        Command ="{Binding OpenProjectCommand}"/>
-00
                         <fluent:SeparatorTabItem />
 
                         <fluent:Button Header="Afsluiten"
