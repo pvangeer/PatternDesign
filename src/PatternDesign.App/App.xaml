@@ -1,9 +1,21 @@
 ﻿<Application x:Class="PatternDesign.App.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:PatternDesign.App"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <x:Array x:Key="PatternSizes" Type="{x:Type system:Int32}">
+            <system:Int32>3</system:Int32>
+            <system:Int32>6</system:Int32>
+            <system:Int32>12</system:Int32>
+            <system:Int32>24</system:Int32>
+            <system:Int32>48</system:Int32>
+            <system:Int32>96</system:Int32>
+            <system:Int32>192</system:Int32>
+            <system:Int32>384</system:Int32>
+            <system:Int32>764</system:Int32>
+            <system:Int32>1528</system:Int32>
+            <system:Int32>3056</system:Int32>
+        </x:Array>
     </Application.Resources>
 </Application>

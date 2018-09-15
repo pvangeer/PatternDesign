@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Media;
 
@@ -12,6 +11,8 @@ namespace PatternDesign.Data
         public ColorPalette()
         {
             colorList = new ObservableCollection<DesignColor>();
+            Colors = new ReadOnlyObservableCollection<DesignColor>(colorList);
+            colorList.Add(new DesignColor(System.Windows.Media.Colors.AntiqueWhite,1));
         }
 
         public void AddColor(Color color)
@@ -21,7 +22,7 @@ namespace PatternDesign.Data
                 return;
             }
 
-            var existingIndices = ColorList.Select(c => c.ColorIndex).Distinct().OrderBy(i => i).ToArray();
+            var existingIndices = Colors.Select(c => c.ColorIndex).Distinct().OrderBy(i => i).ToArray();
             var newIndex = 1;
             while (existingIndices.Contains(newIndex))
             {
@@ -50,6 +51,6 @@ namespace PatternDesign.Data
             colorList.Remove(color);
         }
 
-        public IEnumerable<DesignColor> ColorList => colorList;
+        public ReadOnlyObservableCollection<DesignColor> Colors { get; }
     }
 }

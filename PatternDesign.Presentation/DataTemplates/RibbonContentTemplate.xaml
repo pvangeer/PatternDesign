@@ -42,7 +42,14 @@
             </fluent:Ribbon.Menu>
             <fluent:RibbonTabItem Header="Ontwerp">
                 <fluent:RibbonGroupBox Header="Instellingen">
-                    <fluent:Button Header="Test"/>
+                    <fluent:ComboBox 
+                        ItemsSource="{StaticResource PatternSizes}"
+                        SelectedItem="{Binding NoColumns}"
+                        Header="Aantal steken horizontaal"/>
+                    <fluent:ComboBox 
+                        ItemsSource="{StaticResource PatternSizes}"
+                        SelectedItem="{Binding NoRows}"
+                        Header="Aantal steken verticaal"/>
                 </fluent:RibbonGroupBox>
             </fluent:RibbonTabItem>
             <fluent:RibbonTabItem Header="2dde2">
