@@ -45,7 +45,7 @@
     <Compile Include="DesignColor.cs" />
     <Compile Include="DesignProject.cs" />
     <Compile Include="PatternCell.cs" />
-    <Compile Include="PatternDesign.cs" />
+    <Compile Include="Design.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

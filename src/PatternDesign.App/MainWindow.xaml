@@ -4,12 +4,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:fluent="urn:fluent-ribbon"
-        xmlns:app="clr-namespace:PatternDesign.App"
-        mc:Ignorable="d"
-        Title="Patroonontwerper" Height="450" Width="800">
+                     xmlns:viewModels="clr-namespace:PatternDesign.App.ViewModels"
+                     mc:Ignorable="d"
+        Title="Patroonontwerper" Height="800" Width="1200">
 
     <Window.Resources>
-        <ResourceDictionary Source="/Fluent;Component/Themes/generic.xaml"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Fluent;Component/Themes/generic.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/PatternDesign.Presentation;component/DataTemplates/RibbonContentTemplate.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/PatternDesign.Presentation;component/DataTemplates/GameViewContentTemplate.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
 
     <Window.CommandBindings>
@@ -18,7 +24,7 @@
     </Window.CommandBindings>
 
     <fluent:RibbonWindow.DataContext>
-        <app:MainWindowViewModel/>
+        <viewModels:MainWindowViewModel/>
     </fluent:RibbonWindow.DataContext>
 
     <Grid>
@@ -26,45 +32,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <fluent:Ribbon Grid.Row="0">
-            <fluent:Ribbon.Menu>
-                <fluent:Backstage Background="#008fc5" Header="Bestand">
-                    <fluent:BackstageTabControl>
-                        <fluent:Button Header="Nieuw bestand"
-                                       Icon="/Core.Common.Gui;component\Resources\DocumentHS.png"
-                                       fluent:KeyTip.Keys="N"
-                                       Command="{Binding FileNewCommand}"/>
-
-                        <fluent:Button Header="Opslaan"
-                                       Icon="/Core.Common.Gui;component\Resources\saveHS.png"
-                                       fluent:KeyTip.Keys="S"
-                                       Command="{Binding SaveProjectCommand}"/>
-
-                        <fluent:Button Header="Opslaan Als"
-                                       Icon="/Core.Common.Gui;component\Resources\SaveAsHH.png"
-                                       fluent:KeyTip.Keys="A" 
-                                       Command="{Binding SaveProjectAsCommand}"/>
-
-                        <fluent:Button Header="Openen"
-                                       Icon="/Core.Common.Gui;component\Resources\openfolderHS.png"
-                                       fluent:KeyTip.Keys="O"
-                                       Command ="{Binding OpenProjectCommand}"/>
-                        <fluent:SeparatorTabItem />
-
-                        <fluent:Button Header="Afsluiten"
-                                       Icon="/Core.Common.Gui;component\Resources\ClosePreviewHH.png"
-                                       fluent:KeyTip.Keys="X"
-                                       Command="ApplicationCommands.Close"/>
-
-                    </fluent:BackstageTabControl>
-                </fluent:Backstage>
-            </fluent:Ribbon.Menu>
-
-            <fluent:RibbonTabItem Header="Ontwerp">
-                <fluent:RibbonGroupBox Header="groep">
-                    <fluent:Button Header="Test"/>
-                </fluent:RibbonGroupBox>
-            </fluent:RibbonTabItem>
-        </fluent:Ribbon>
+        <ContentPresenter Grid.Row="0" Content="{Binding RibbonViewModel}" ContentTemplate="{StaticResource RibbonContentTemplate}"/>
+        <ContentPresenter Grid.Row="1" Content="{Binding GameViewModel}" ContentTemplate="{StaticResource GameViewContentTemplate}"/>
     </Grid>
 </fluent:RibbonWindow>

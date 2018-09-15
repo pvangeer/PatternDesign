@@ -92,7 +92,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -131,5 +131,16 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\PatternDesign.Presentation\PatternDesign.Presentation.csproj">
+      <Project>{B3B3FD5D-3626-4247-B575-F9F219930C37}</Project>
+      <Name>PatternDesign.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PatternDesign.Data\PatternDesign.Data.csproj">
+      <Project>{6A618C8E-4721-4F22-A791-6DE8181E02C4}</Project>
+      <Name>PatternDesign.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

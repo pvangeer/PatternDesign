@@ -1,9 +1,19 @@
 using System.Windows.Input;
+using PatternDesign.Data;
 
-namespace PatternDesign.App
+namespace PatternDesign.Presentation.ViewModels
 {
-    public class MainWindowViewModel
+    public class RibbonViewModel
     {
+        public RibbonViewModel() : this(new DesignProject()){ }
+
+        public RibbonViewModel(DesignProject project)
+        {
+            Project = project;
+        }
+
+        public DesignProject Project { get; }
+
         public ICommand FileNewCommand
         {
             get { throw new System.NotImplementedException(); }
@@ -23,5 +33,7 @@ namespace PatternDesign.App
         {
             get { throw new System.NotImplementedException(); }
         }
+
+
     }
 }

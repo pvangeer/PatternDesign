@@ -1,0 +1,71 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:converters="clr-namespace:PatternDesign.Presentation.Converters"
+                    xmlns:viewModels="clr-namespace:PatternDesign.Presentation.ViewModels">
+
+    <converters:IndexLeftToCanvasLeftValueConverter x:Key="IndexLeftToCanvasLeftValueConverter" />
+    <converters:IndexTopToCanvasTopValueConverter x:Key="IndexTopToCanvasTopValueConverter" />
+    <converters:GridToDimensionConverter x:Key="GridToDimensionConverter" />
+
+    <DataTemplate x:Key="GameViewContentTemplate" DataType="viewModels:GameViewModel">
+        <Grid>
+            <ItemsControl ItemsSource="{Binding Cells}" x:Name="CellItemsControl">
+                <ItemsControl.ItemContainerStyle>
+                    <Style>
+                        <Setter Property="Canvas.Left">
+                            <Setter.Value>
+                                <MultiBinding Converter="{StaticResource IndexLeftToCanvasLeftValueConverter}">
+                                    <Binding Path="IndexLeft"/>
+                                    <Binding ElementName="CellItemsControl" Path="DataContext.NoColumns"/>
+                                    <Binding ElementName="CellItemsControl" Path="DataContext.NoRows"/>
+                                    <Binding ElementName="Canvas" Path="ActualWidth"/>
+                                    <Binding ElementName="Canvas" Path="ActualHeight"/>
+                                </MultiBinding>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Canvas.Top">
+                            <Setter.Value>
+                                <MultiBinding Converter="{StaticResource IndexTopToCanvasTopValueConverter}">
+                                    <Binding Path="IndexTop"/>
+                                    <Binding ElementName="CellItemsControl" Path="DataContext.NoColumns"/>
+                                    <Binding ElementName="CellItemsControl" Path="DataContext.NoRows"/>
+                                    <Binding ElementName="Canvas" Path="ActualWidth"/>
+                                    <Binding ElementName="Canvas" Path="ActualHeight"/>
+                                </MultiBinding>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas Name="Canvas" IsItemsHost="True" Margin="{Binding Margin}"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="viewModels:PatternCellViewModel">
+                        <Grid>
+                            <Rectangle Fill="{Binding Color}" Stroke="DarkGray" StrokeThickness="1">
+                                <Rectangle.Width>
+                                    <MultiBinding Converter="{StaticResource GridToDimensionConverter}">
+                                        <Binding ElementName="CellItemsControl" Path="DataContext.NoColumns"/>
+                                        <Binding ElementName="CellItemsControl" Path="DataContext.NoRows"/>
+                                        <Binding ElementName="Canvas" Path="ActualWidth"/>
+                                        <Binding ElementName="Canvas" Path="ActualHeight"/>
+                                    </MultiBinding>
+                                </Rectangle.Width>
+                                <Rectangle.Height>
+                                    <MultiBinding Converter="{StaticResource GridToDimensionConverter}">
+                                        <Binding ElementName="CellItemsControl" Path="DataContext.NoColumns"/>
+                                        <Binding ElementName="CellItemsControl" Path="DataContext.NoRows"/>
+                                        <Binding ElementName="Canvas" Path="ActualWidth"/>
+                                        <Binding ElementName="Canvas" Path="ActualHeight"/>
+                                    </MultiBinding>
+                                </Rectangle.Height>
+                            </Rectangle>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
+    </DataTemplate>
+</ResourceDictionary>
